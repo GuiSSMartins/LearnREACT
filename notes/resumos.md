@@ -32,4 +32,4 @@ cd my-react-app
 sudo npm start
 ```
 
-e seguir as instruções pedidas (principalmente sobre o que escrever no chrome)
+e seguir as instruções pedidas (principalmente sobre o que escrever no chrome do servidor localhost).
