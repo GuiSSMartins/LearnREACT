@@ -10,3 +10,26 @@ uses a syntax extension of JavaScript called JSX that allows you to write HTML d
 ```
 
 ```
+
+Como construir a 1ª pasta (neste caso, o nome da app é 'my-react-app'):
+
+```
+sudo npx create-react-app my-react-app
+```
+
+Como compilar (dentro da pasta do projeto):
+
+```
+cd my-react-app
+sudo npm run build
+serve -s build
+```
+
+OU 
+
+```
+cd my-react-app
+sudo npm start
+```
+
+e seguir as instruções pedidas (principalmente sobre o que escrever no chrome)
