@@ -16,6 +16,7 @@ Como construir a 1ª pasta (neste caso, o nome da app é 'my-react-app'):
 ```
 sudo npx create-react-app my-react-app --template typescript
 npx create-react-app react-type --template typescript
+npx create-react-app tic-tac-toe --template typescript
 ```
 
 Como compilar (dentro da pasta do projeto):
