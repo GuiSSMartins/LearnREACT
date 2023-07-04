@@ -35,6 +35,32 @@ JSX looks like HTML, but under the hood it is transformed into plain JavaScript 
 
 In React, many HTML and SVG attributes are written in camelCase. For example, instead of stroke-width you use strokeWidth. Since class is a reserved word, in React you write className instead.
 
+The Rules of JSX 
+1. Return a single root element 
+2. Close all the tags
+3. camelCase all most of the things! 
+
+Inline style properties are written in camelCase. For example, HTML <ul style="background-color: black"> would be written as <ul style={{ backgroundColor: 'black' }}>  in your component.
+
+You can only use curly braces in two ways inside JSX:
+
+As text directly inside a JSX tag: <h1>{name}'s To Do List</h1> works, but <{tag}>Gregorio Y. Zara's To Do List</{tag}> will not.
+As attributes immediately following the = sign: src={avatar} will read the avatar variable, but src="{avatar}" will pass the string "{avatar}".
+
+The next time you see {{ and }} in JSX, know that it’s nothing more than an object inside the JSX curlies!
+
+Don’t miss the pair of { and } curlies inside of ( and ) when declaring props:
+
+function Avatar({ person, size }) {
+  // ...
+}
+
+function Avatar(props) {
+  let person = props.person;
+  let size = props.size;
+  // ...
+}
+
 ```
 
 ```
