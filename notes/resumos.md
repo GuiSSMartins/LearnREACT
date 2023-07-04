@@ -61,6 +61,42 @@ function Avatar(props) {
   // ...
 }
 
+For example, a common mistake is to write code like messageCount && <p>New messages</p>. It’s easy to assume that it renders nothing when messageCount is 0, but it really renders the 0 itself!
+
+To fix it, make the left side a boolean: messageCount > 0 && <p>New messages</p>.
+
+let itemContent = name;
+Use an if statement to reassign a JSX expression to itemContent if isPacked is true:
+
+if (isPacked) {
+  itemContent = name + " ✔";
+}
+
+Curly braces open the “window into JavaScript”. Embed the variable with curly braces in the returned JSX tree, nesting the previously calculated expression inside of JSX:
+
+<li className="item">
+  {itemContent}
+</li>
+
+Here’s a short example of how to generate a list of items from an array:
+
+1. Move the data into an array:
+const people = [
+  'Creola Katherine Johnson: mathematician',
+  'Mario José Molina-Pasquel Henríquez: chemist',
+  'Mohammad Abdus Salam: physicist',
+  'Percy Lavon Julian: chemist',
+  'Subrahmanyan Chandrasekhar: astrophysicist'
+];
+
+2. Map the people members into a new array of JSX nodes, listItems:
+const listItems = people.map(person => <li>{person}</li>);
+
+3. Return listItems from your component wrapped in a <ul>:
+return <ul>{listItems}</ul>;
+
+JSX elements directly inside a map() call always need keys!
+
 ```
 
 ```

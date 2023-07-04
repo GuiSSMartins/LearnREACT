@@ -4,6 +4,14 @@ import './App.css';
 import Gallery from './Gallery'; // default export
 // import { Button } from './Button.js'; -> named export (example)
 import { Profile } from './Profile';
+import Clock from './Clock';
+import DrinkList from './Drink'; // default export
+import PackingList from './Item'; // default export
+import {List, RecipeList } from './data';
+import Poem from './Poem';
+import RecipeAlg from './Recipe';
+import TeaGathering from './Cup';
+import StoryTray from './StoryTray';
 
 function Bio() {
   return (
@@ -20,11 +28,25 @@ function Bio() {
   );
 }
 
-export default function App() {
+
+
+
+
+// <TeaGathering />
+// <StoryTray />
+
+export default function App() { // a partir de List, data.tsx diz como aceder aos valores das listas 
   return (
     <>
       <Bio />
+      <Clock time={new Date()}/>
       <Gallery />
+      <PackingList />
+      <DrinkList />
+      <List /> 
+      <RecipeList />
+      <Poem />
+      <RecipeAlg />
     </>
   );
 }

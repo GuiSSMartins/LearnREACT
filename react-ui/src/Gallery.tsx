@@ -1,4 +1,5 @@
-import { Profile } from './Profile';
+import { Profile, Profile2, Profile3, Gallery3} from './Profile';
+import Avatar from './Avatar';
 import { getImageUrl } from './utils';
 
 function Congratulations() {
@@ -72,18 +73,6 @@ function Congratulations() {
       </div>
     );
   }
-
-  function Avatar({ person, size } : { person : any, size: number}) {
-    return (
-        <img
-        className="avatar"
-        src={getImageUrl(person)}
-        alt={person.name}
-        width={size}
-        height={size}
-      />
-    );
-  }
   
   
   export default function Gallery() {
@@ -128,6 +117,8 @@ function Congratulations() {
           imageId: '1bX5QH6'
         }}
         />
+        <Profile2 />
+        <Gallery3 />
       </section>
     );
   }
