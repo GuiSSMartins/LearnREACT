@@ -244,6 +244,26 @@ The [ and ] syntax here is called array destructuring and it lets you read value
 
 It’s important that all calls to Hooks happen before the first return.
 
+A snapshot is the __state__ of a system at a particular point in time.
+
+----------------------------------------------------
+
+setNumber(n => n + 1): n => n + 1
+
+queued update	| n	| returns
+n => n + 1	| 0	| 0 + 1 = 1
+n => n + 1	| 1	| 1 + 1 = 2
+
+
+setNumber(number + 5);
+setNumber(n => n + 1);
+setNumber(42);
+
+queued update	| n	| returns
+“replace with 5”	| 0 (unused) |	5
+n => n + 1	| 5	| 5 + 1 = 6
+“replace with 42”	| 6 (unused) |	42
+
 ```
 
 ```

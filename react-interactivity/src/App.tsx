@@ -5,13 +5,14 @@ import "./App.css";
 import Gallery from "./Gallery";
 import { Toolbar, Toolbar2 } from "./ToolBar";
 import { Form, Form2, Form3 } from "./Form";
-import Counter from "./Counter";
+import {Counter, Counter2} from "./Counter";
 import BucketList from "./BucketList";
 import ButtonApp from "./Button"; // o conteúdo escrito no botão depende do input do utilizador
 import Signup from "./Signup";
 import LightSwitch from "./LightSwitch";
 import ColorSwitch from "./ColorSwitch";
-import {FeedbackForm, FeedbackForm2} from "./FeedbackForm";
+import { FeedbackForm, FeedbackForm2 } from "./FeedbackForm";
+import TrafficLight from "./TrafficLight";
 
 // <ColorSwitch /> não está a funcionar !!!
 
@@ -31,7 +32,6 @@ export default function App() {
       <Toolbar />
       <ButtonApp />
       <Signup />
-
       <div>
         <h2>
           Só para mostrar como uma Galeria não afeta a outra através do uso de
@@ -49,6 +49,10 @@ export default function App() {
       <FeedbackForm />
       Coisas separadas
       <FeedbackForm2 />
+      <div>
+        <TrafficLight />
+      </div>
+      <Counter2 />
     </>
   );
 }

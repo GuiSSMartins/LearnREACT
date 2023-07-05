@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Counter() {
+export function Counter() {
   const [score, setScore] = useState(0);
 
   function increment() {
@@ -22,4 +22,20 @@ export default function Counter() {
       <h1>Score: {score}</h1>
     </>
   );
+}
+//--------------------------------------
+
+export function Counter2() {
+  const [number, setNumber] = useState(0);
+
+  return (
+    <>
+      <h1>{number}</h1>
+      <button onClick={() => {
+        setNumber(n => n + 1);
+        setNumber(n => n + 1);
+        setNumber(n => n + 1);
+      }}>+3</button>
+    </>
+  )
 }

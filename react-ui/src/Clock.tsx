@@ -18,8 +18,11 @@ export default function Clock() {
 
   React.useEffect(() => {update_date()} , []);
   return (
-    <h1 className={className}>
-      {date.toLocaleTimeString()}
-    </h1>
+    <>
+      <h1 className={className}>
+        {date.toLocaleTimeString()}
+      </h1>
+      <input />
+    </>
   );
 }
