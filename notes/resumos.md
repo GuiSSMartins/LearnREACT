@@ -103,10 +103,11 @@ JSX elements directly inside a map() call always need keys!
 
 Como construir a 1ª pasta (neste caso, o nome da app é 'my-react-app'):
 
-```
+``` (1º UBUNTU - Linux)
 sudo npx create-react-app my-react-app --template typescript
 npx create-react-app react-type --template typescript
 npx create-react-app tic-tac-toe --template typescript
+npx create-react-app react-interactivity --template typescript
 ```
 
 Como compilar (dentro da pasta do projeto):
