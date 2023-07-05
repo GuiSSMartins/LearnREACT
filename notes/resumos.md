@@ -97,6 +97,68 @@ return <ul>{listItems}</ul>;
 
 JSX elements directly inside a map() call always need keys!
 
+
+--------------------------
+
+const es = {largura : 200, altura : 200};
+const styles = {largura : 50, comprimento : 50};
+
+console.log("1", es);
+console.log("2", {...es,...styles});
+console.log("3", {...styles,...es});
+
+(Impresso no ecrã)
+
+1 { largura: 200, altura: 200 }
+2 { largura: 50, altura: 200, comprimento: 50 }
+3 { largura: 200, comprimento: 50, altura: 200 }
+
+--------------------------------------
+
+#### Definida função dentro de código Typescript/HTML mistrurado
+
+onPlayMovie={() => alert('Playing!')}
+
+-------------------------------------
+
+#### Lógica simples dos botões
+
+export default function Button() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Click me
+    </button>
+  );
+}
+
+OU
+
+<button onClick={function handleClick() {
+  alert('You clicked me!');
+}}>
+
+OU
+
+<button onClick={() => {
+  alert('You clicked me!');
+}}>
+
+Functions passed to event handlers must be passed, not called. For example:
+
+ passing a function (correct)	 |  calling a function (incorrect)
+<button onClick={handleClick}> | <button onClick={handleClick()}>
+
+<button onClick={() => alert('You clicked me!')}>
+
+In both cases, what you want to pass is a function:
+
+<button onClick={handleClick}> passes the handleClick function.
+<button onClick={() => alert('...')}> passes the () => alert('...') function.
+
 ```
 
 ```

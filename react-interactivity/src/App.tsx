@@ -1,34 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+import Gallery from "./Gallery";
+import ToolBar from "./ToolBar";
+import {Form, Form2} from "./Form";
+import Counter from "./Counter";
+import BucketList from "./BucketList";
+import Button from "./Button"; // o conteúdo escrito no botão depende do input do utilizador
 
 export default function App() {
   return (
-    <Toolbar
-      onPlayMovie={() => alert('Playing!')}
-      onUploadImage={() => alert('Uploading!')}
-    />
+    <>
+      <ToolBar
+        onPlayMovie={() => alert("Playing!")}
+        onUploadImage={() => alert("Uploading!")}
+      />
+      <Gallery />
+      <Form />
+      <Counter />
+      <Form2 />
+      <BucketList />
+    </>
   );
 }
-
-function Toolbar({ onPlayMovie, onUploadImage } : any) {
-  return (
-    <div>
-      <Button onClick={onPlayMovie}>
-        Play Movie
-      </Button>
-      <Button onClick={onUploadImage}>
-        Upload Image
-      </Button>
-    </div>
-  );
-}
-
-function Button({ onClick, children } : any) {
-  return (
-    <button onClick={onClick}>
-      {children}
-    </button>
-  );
-}
-
