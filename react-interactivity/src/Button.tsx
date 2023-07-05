@@ -1,24 +1,12 @@
-function Button({ onClick, children } : any) {
-  return <button onClick={onClick}>{children}</button>;
+function Button({ onSmash, children } : any) {
+  return <button onClick={onSmash}>{children}</button>;
 }
 
-function PlayButton({ movieName } : any) {
-  function handlePlayClick() {
-    alert(`Playing ${movieName}!`);
-  }
-
-  return <Button onClick={handlePlayClick}>Play "{movieName}"</Button>;
-}
-
-function UploadButton() {
-  return <Button onClick={() => alert("Uploading!")}>Upload Image</Button>;
-}
-
-export default function Toolbar() {
+export default function ButtonApp() {
   return (
     <div>
-      <PlayButton movieName="Kiki's Delivery Service" />
-      <UploadButton />
+      <Button onSmash={() => alert("Playing!")}>Play Movie</Button>
+      <Button onSmash={() => alert("Uploading!")}>Upload Image</Button>
     </div>
   );
 }

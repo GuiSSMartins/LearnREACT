@@ -159,6 +159,91 @@ In both cases, what you want to pass is a function:
 <button onClick={handleClick}> passes the handleClick function.
 <button onClick={() => alert('...')}> passes the () => alert('...') function.
 
+
+By convention, event handler props should start with on, followed by a capital letter.
+
+For example, the Button component’s onClick prop could have been called onSmash.
+
+Make sure that you use the appropriate HTML tags for your event handlers. For example, to handle clicks, use <button onClick={handleClick}> instead of <div onClick={handleClick}>.
+
+e -> event
+If you want to prevent an event from reaching parent components, you need to call e.stopPropagation()
+
+function Button({ onClick, children }) {
+  return (
+    <button onClick={e => {
+      e.stopPropagation();
+      onClick();
+    }}>
+      {children}
+    </button>
+  );
+}
+
+export default function Toolbar() {
+  return (
+    <div className="Toolbar" onClick={() => {
+      alert('You clicked on the toolbar!');
+    }}>
+      <Button onClick={() => alert('Playing!')}>
+        Play Movie
+      </Button>
+      <Button onClick={() => alert('Uploading!')}>
+        Upload Image
+      </Button>
+    </div>
+  );
+}
+
+Since the propagation was stopped, the parent <div>’s onClick handler does not run.
+As a result of e.stopPropagation(), clicking on the buttons now only shows a single alert (from the <button>) rather than the two of them (from the <button> and the parent toolbar <div>).
+
+
+
+__BUT__ (in rare cases) you might need to catch all events on child elements, even if they stopped propagation. You can do this by adding Capture at the end of the event name:
+
+<div onClickCapture={() => { /* this runs first */ }}>
+  <button onClick={e => e.stopPropagation()} />
+  <button onClick={e => e.stopPropagation()} />
+</div>
+
+Each event propagates in three phases:
+
+1. It travels down, calling all onClickCapture handlers.
+2. It runs the clicked element’s onClick handler.
+3. It travels upwards, calling all onClick handlers.
+
+Capture events are useful for code like routers or analytics, but you probably won’t use them in app code.
+
+Don’t confuse e.stopPropagation() and e.preventDefault(). They are both useful, but are unrelated:
+
+e.stopPropagation() stops the event handlers attached to the tags above from firing.
+e.preventDefault() prevents the default browser behavior for the few events that have it.
+
+Event handlers are the best place for side effects.
+You can handle events by passing a function as a prop to an element like <button>.
+Event handlers must be passed, not called! onClick={handleClick}, not onClick={handleClick()}.
+Events propagate upwards. Call e.stopPropagation() on the first argument to prevent that.
+Events may have unwanted default browser behavior. Call e.preventDefault() to prevent that.
+
+The useState Hook provides those two things:
+
+- A state variable to retain the data between renders.
+- A state setter function to update the variable and trigger React to render the component again.
+
+__const [index, setIndex] = useState(0);__  0 -> initial value of index 
+(useState() - Hook example)  In this case, you want React to remember index.
+
+~~let index = 0;~~ Be Careful!!!
+
+function handleClick() {
+  setIndex(index + 1);
+}
+
+The [ and ] syntax here is called array destructuring and it lets you read values from an array. The array returned by useState always has exactly two items.
+
+It’s important that all calls to Hooks happen before the first return.
+
 ```
 
 ```
