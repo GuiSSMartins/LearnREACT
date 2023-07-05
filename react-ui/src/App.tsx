@@ -39,7 +39,7 @@ export default function App() { // a partir de List, data.tsx diz como aceder ao
   return (
     <>
       <Bio />
-      <Clock time={new Date()}/>
+      <Clock />
       <Gallery />
       <PackingList />
       <DrinkList />
