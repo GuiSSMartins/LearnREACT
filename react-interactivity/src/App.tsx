@@ -13,6 +13,8 @@ import LightSwitch from "./LightSwitch";
 import ColorSwitch from "./ColorSwitch";
 import { FeedbackForm, FeedbackForm2 } from "./FeedbackForm";
 import TrafficLight from "./TrafficLight";
+import RequestTracker from "./RequestTracker";
+import MovingDot from "./MovingDot";
 
 // <ColorSwitch /> não está a funcionar !!!
 
@@ -53,6 +55,8 @@ export default function App() {
         <TrafficLight />
       </div>
       <Counter2 />
+      <RequestTracker />
+      <MovingDot />
     </>
   );
 }

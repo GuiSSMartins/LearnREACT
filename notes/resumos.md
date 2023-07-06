@@ -264,6 +264,21 @@ queued update	| n	| returns
 n => n + 1	| 5	| 5 + 1 = 6
 “replace with 42”	| 6 (unused) |	42
 
+To update some state multiple times in one event, you can use setNumber(n => n + 1) updater function.
+
+You can store any kind of JavaScript value in state.
+const [x, setX] = useState(0);
+
+These kinds of JavaScript values are “immutable”, meaning unchangeable or “read-only”. You can trigger a re-render to replace a value: setX(5);
+
+
+const [position, setPosition] = useState({ x: 0, y: 0 });
+
+position.x = 5;
+
+
+Mutation is only a problem when you change existing objects that are already in state. Mutating an object you’ve just created is okay because no other code references it yet.
+
 ```
 
 ```
