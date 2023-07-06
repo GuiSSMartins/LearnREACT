@@ -4,8 +4,8 @@ import "./App.css";
 
 import Gallery from "./Gallery";
 import { Toolbar, Toolbar2 } from "./ToolBar";
-import { Form, Form2, Form3 } from "./Form";
-import {Counter, Counter2} from "./Counter";
+import { Form, Form2, Form3, Form4 } from "./Form";
+import { Counter, Counter2 } from "./Counter";
 import BucketList from "./BucketList";
 import ButtonApp from "./Button"; // o conteúdo escrito no botão depende do input do utilizador
 import Signup from "./Signup";
@@ -15,12 +15,25 @@ import { FeedbackForm, FeedbackForm2 } from "./FeedbackForm";
 import TrafficLight from "./TrafficLight";
 import RequestTracker from "./RequestTracker";
 import MovingDot from "./MovingDot";
+import {NumberCard} from "./NumberCard";
+import Scoreboard from "./Scoreboard";
+import Canvas from "./Game/Canvas";
+import { List, List2 } from "./List";
 
 // <ColorSwitch /> não está a funcionar !!!
 
 export default function App() {
+  const array = [1, 2, 6];
   return (
     <>
+      {/* <div style={{ width: "100%", height : "200px", display: "flex", flexDirection: "column" }}>
+        {" "}
+        <div style={{ width: "100%", height : "100%", background: "red" , padding : "20px"}}>
+          {" "}
+          <div style={{ width: "100%", height : "100%", background: "blue"}}></div>{" "}
+        </div>{" "}
+      </div> */}
+      {array.map((item) => {return (<NumberCard id = {item}/>)})}
       <Toolbar2
         onPlayMovie={() => alert("Playing!")}
         onUploadImage={() => alert("Uploading!")}
@@ -57,6 +70,13 @@ export default function App() {
       <Counter2 />
       <RequestTracker />
       <MovingDot />
+      <Form4 />
+      <Scoreboard />
+      <List />
+      <List2 />
+      <div>
+        <Canvas />
+      </div>
     </>
   );
 }

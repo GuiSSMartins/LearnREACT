@@ -279,6 +279,97 @@ position.x = 5;
 
 Mutation is only a problem when you change existing objects that are already in state. Mutating an object you’ve just created is okay because no other code references it yet.
 
+
+-------------------------------------------------------------
+
+
+setPerson({
+  firstName: e.target.value, // New first name from the input
+  lastName: person.lastName,
+  email: person.email
+});
+
+You can use the ... object spread syntax so that you don’t need to copy every property separately.
+
+setPerson({
+  ...person, // Copy the old fields
+  firstName: e.target.value // But override this one
+});
+
+-----------------------------------
+
+Better way to change values
+
+```
+const [person, setPerson] = useState({
+  name: 'Niki de Saint Phalle',
+  artwork: {
+    title: 'Blue Nana',
+    city: 'Hamburg',
+    image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  }
+});
+
+const nextArtwork = { ...person.artwork, city: 'New Delhi' };
+const nextPerson = { ...person, artwork: nextArtwork };
+setPerson(nextPerson);~
+
+// OU como uma única função
+
+setPerson({
+  ...person, // Copy other fields
+  artwork: { // but replace the artwork
+    ...person.artwork, // with the same one
+    city: 'New Delhi' // but in New Delhi!
+  }
+});
+
+```
+
+~~person.artwork.city = 'New Delhi';~~ (as estruturas são __imutaveis__!)
+
+let obj1 = {
+  title: 'Blue Nana',
+  city: 'Hamburg',
+  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+};
+
+let obj2 = {
+  name: 'Niki de Saint Phalle',
+  artwork: obj1
+};
+
+If you were to mutate obj3.artwork.city, it would affect both obj2.artwork.city and obj1.city. This is because obj3.artwork, obj2.artwork, and obj1 are the same object. This is difficult to see when you think of objects as “nested”. Instead, they are separate objects “pointing” at each other with properties.
+
+! Treat all state in React as __immutable__ !
+
+Arrays are mutable in JavaScript, but you should treat them as immutable when you store them in state. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array.
+
+	          avoid (mutates the array)	          prefer (returns a new array)
+adding	    push, unshift	                      concat, [...arr] spread syntax (example)
+removing	  pop, shift, splice	                filter, slice (example)
+replacing	  splice, arr[i] = ... assignment	    map (example)
+sorting	    reverse, sort	                      copy the array first (example)
+
+You shouldn’t reassign items inside an array like arr[0] = 'bird', and you also shouldn’t use methods that mutate the array, such as push() and pop(). Instead, every time you want to update an array, you’ll want to pass a new array to your state setting function. To do that, you can create a new array from the original array in your state by calling its non-mutating methods like filter() and map().
+
+push() will mutate an array, which you don’t want: Instead, create a new array which contains the existing items and a new item at the end. There are multiple ways to do this, but the easiest one is to use the ... array spread syntax:
+
+```
+setArtists( // Replace the state
+  [ // with a new array
+    ...artists, // that contains all the old items
+    { id: nextId++, name: name } // and one new item at the end
+  ]
+);
+
+setArtists([
+  { id: nextId++, name: name },
+  ...artists // Put old items at the end
+]);
+```
+
+
 ```
 
 ```
