@@ -369,6 +369,34 @@ setArtists([
 ]);
 ```
 
+If you want to change some or all items of the array, you can use map() to create a new array. 
+
+Here, you use the [...list] spread syntax to create a copy of the original array first. Now that you have a copy, you can use mutating methods like nextList.reverse() or nextList.sort(), or even assign individual items with nextList[0] = "something".
+
+const nextList = [...list];
+nextList[0].seen = true; // Problem: mutates list[0]
+setList(nextList);
+
+Although nextList and list are two different arrays, nextList[0] and list[0] point to the same object. So by changing nextList[0].seen, you are also changing list[0].seen.
+
+const myNextList = [...myList];
+const artwork = myNextList.find(a => a.id === artworkId);
+artwork.seen = nextSeen; // Problem: mutates an existing item
+setMyList(myNextList);
+
+Although the myNextList array itself is new, the items themselves are the same as in the original myList array. So changing artwork.seen changes the original artwork item. You can use map to substitute an old item with its updated version without mutation.
+
+setMyList(myList.map(artwork => {
+  if (artwork.id === artworkId) {
+    // Create a *new* object with changes
+    return { ...artwork, seen: nextSeen };
+  } else {
+    // No changes
+    return artwork;
+  }
+}));
+
+You can use the [...arr, newItem] array spread syntax to create arrays with new items; and use filter() and map() to create new arrays with filtered or transformed items.
 
 ```
 
