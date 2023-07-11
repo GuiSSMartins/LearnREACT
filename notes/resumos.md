@@ -398,6 +398,8 @@ setMyList(myList.map(artwork => {
 
 You can use the [...arr, newItem] array spread syntax to create arrays with new items; and use filter() and map() to create new arrays with filtered or transformed items.
 
+Redundant or duplicate state is a common source of bugs.
+
 ```
 
 ```
