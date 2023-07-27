@@ -5,6 +5,7 @@ import { Form, Form2 } from "./Form";
 import { ErrorBoundary } from "./ErrorBoundary";
 import Accordion from "./Accordion";
 import Messenger from "./Messenger/Messenger";
+import Picture from "./Picture";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Form2 />
       <Accordion />
       <Messenger />
+      <Picture />
     </ErrorBoundary>
   );
 }
