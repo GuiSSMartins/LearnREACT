@@ -11,6 +11,16 @@ CSS - style of the web page
 Java/Typescript - interactivity
 HTML - markdown
 
+```
+interface UserData {
+  username: string;
+  password: string;
+  prevState: null
+}
+
+//...
+const [user, setUser] = useState<UserData | null>(null);
+```
 
 #### (Named & Default) Exports 
 
